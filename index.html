@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spunk Global — Growth that matters</title>
+<meta name="description" content="Spunk Global is an AI-native strategy, marketing, and technology partner for startups and brands. Strategic marketing, performance, SEO & AEO, content, and end-to-end tech solutions built for measurable growth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101014;
+    --ink-soft:#1a1a20;
+    --paper:#f6f6f2;
+    --paper-dim:#eceae3;
+    --signal:#ff6400;
+    --signal-tint:#fcddc9;
+    --logo-grey:#8f8f8f;
+    --grey:#6d6d67;
+    --grey-on-dark:#9c9ca3;
+    --line-light:#dcdad2;
+    --line-dark:#2a2a31;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'IBM Plex Sans', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  h1,h2,h3,h4{
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+  }
+  ::selection{background:var(--signal);color:#fff;}
+  :focus-visible{outline:2px solid var(--signal);outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:20px 0;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:padding .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .nav.is-scrolled{
+    padding:14px 0;
+    border-bottom:1px solid var(--line-light);
+    box-shadow:0 8px 24px rgba(16,16,20,0.05);
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .brand{
+    font-family:'Archivo', sans-serif;
+    font-weight:900;
+    font-size:22px;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .brand span{color:var(--signal);}
+  .brand-mark{
+    display:inline-flex;
+    align-items:center;
+    line-height:0;
+  }
+  .brand-mark img{height:72px;width:auto;display:block;}
+  .footer-brand .brand-mark img{height:86px;}
+  .nav-links{display:flex;gap:8px;align-items:center;}
+  .nav-links > li{position:relative;}
+  .nav-links a{
+    color:var(--ink);
+    font-size:14.5px;
+    font-weight:500;
+    transition:color .2s ease;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:12px 16px;
+  }
+  .nav-links a:hover{color:var(--signal);}
+  .nav-caret{
+    font-size:11px;
+    color:var(--grey);
+    transition:transform .2s ease;
+  }
+  .nav-item.has-dropdown:hover .nav-caret{transform:rotate(180deg);color:var(--signal);}
+
+  .dropdown-panel{
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translateX(-50%) translateY(6px);
+    background:#fff;
+    border:1px solid var(--line-light);
+    box-shadow:0 20px 40px rgba(16,16,20,0.09);
+    padding:12px;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+    z-index:50;
+  }
+  .nav-item.has-dropdown:hover .dropdown-panel{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(-50%) translateY(0);
+    pointer-events:auto;
+  }
+  .dropdown-panel.dropdown-grid{
+    width:340px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2px;
+  }
+  .dropdown-panel.dropdown-list{width:220px;}
+  .dropdown-link{
+    display:block;
+    padding:11px 14px !important;
+    border-radius:2px;
+    font-family:'Archivo', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .dropdown-link:hover{background:var(--signal-tint);color:var(--ink) !important;}
+
+  .nav-cta{
+    background:var(--signal);
+    color:#fff !important;
+    padding:10px 20px;
+    border-radius:var(--radius);
+    font-weight:600;
+    font-size:14.5px;
+    transition:transform .18s ease, background .2s ease;
+    margin-left:12px;
+  }
+  .nav-cta:hover{background:#ff6142;transform:translateY(-1px);color:#fff !important;}
+  .nav-toggle{display:none;background:none;border:none;color:var(--ink);font-size:26px;cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:#ffffff;
+    color:var(--ink);
+    padding:180px 0 110px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-220px;right:-160px;
+    width:640px;height:640px;
+    background:radial-gradient(circle, rgba(255,100,0,0.12) 0%, rgba(255,100,0,0) 68%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:1;}
+  .hero-grid{position:relative;z-index:1;}
+  .hero-kicker{
+    font-size:14.5px;
+    color:var(--grey);
+    font-weight:500;
+    margin-bottom:22px;
+    max-width:520px;
+  }
+  .hero h1{
+    font-size:clamp(48px, 8vw, 96px);
+    max-width:920px;
+  }
+  .rotate-wrap{
+    display:inline-block;
+    overflow:hidden;
+    height:1.05em;
+    vertical-align:top;
+    position:relative;
+  }
+  .rotate-word{
+    display:block;
+    background:linear-gradient(90deg, var(--signal) 0%, #b6480c 55%, var(--ink) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .rotate-word.is-animating{
+    animation:rotate-up .55s cubic-bezier(.22,.85,.32,1);
+  }
+  @keyframes rotate-up{
+    0%{transform:translateY(115%);opacity:0;}
+    100%{transform:translateY(0);opacity:1;}
+  }
+  .hero-sub{
+    margin-top:28px;
+    font-size:19px;
+    color:var(--grey);
+    max-width:560px;
+    line-height:1.55;
+  }
+  .hero-actions{
+    margin-top:40px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .hero-grid{
+    display:block;
+  }
+  .hero-showcase{display:none;}
+
+  /* ---------- HERO SHOWCASE (desktop only) ---------- */
+  @media (min-width:1025px){
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.35fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+    .hero-showcase{
+      display:block;
+      position:relative;
+      justify-self:end;
+      width:100%;
+      max-width:440px;
+    }
+  }
+  .hero-showcase-frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:6/5;
+  }
+  .hero-slide{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:18px;
+    box-shadow:0 24px 60px rgba(16,16,20,0.16), 0 4px 14px rgba(16,16,20,0.06);
+    transition:transform .85s cubic-bezier(.22,.85,.32,1), opacity .85s cubic-bezier(.22,.85,.32,1);
+  }
+  .hero-slide[data-role="active"]{transform:translate(0,0) scale(1);opacity:1;z-index:3;}
+  .hero-slide[data-role="peek"]{transform:translate(16px,24px) scale(0.94);opacity:0.6;z-index:2;}
+  .hero-slide[data-role="hidden"]{transform:translate(30px,46px) scale(0.9);opacity:0;z-index:1;pointer-events:none;}
+  .hero-showcase-controls{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:18px;
+  }
+  .hero-nav-btn{
+    width:34px;height:34px;
+    border-radius:50%;
+    border:1px solid var(--line-light);
+    background:#fff;
+    color:var(--ink);
+    font-size:16px;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .hero-nav-btn:hover{border-color:var(--signal);color:var(--signal);}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:15px 26px;
+    font-weight:600;
+    font-size:15px;
+    border-radius:var(--radius);
+    transition:transform .18s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--signal);color:#fff;}
+  .btn-primary:hover{background:#ff6142;transform:translateY(-1px);}
+  .btn-ghost-dark{border-color:#39393f;color:#fff;}
+  .btn-ghost-dark:hover{border-color:#7a7a83;}
+  .btn-ghost-light{border-color:var(--line-light);color:var(--ink);}
+  .btn-ghost-light:hover{border-color:var(--ink);}
+
+  /* ---------- SECTION SHELL ---------- */
+  .section{padding:120px 0;}
+  .section--tight{padding:100px 0;}
+  .section--dark{background:var(--ink);color:#fff;}
+  .section--dim{background:var(--paper-dim);}
+  .section--white{background:#fff;}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+    margin-bottom:52px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(32px,4.4vw,48px);max-width:600px;}
+  .section-head p{
+    max-width:360px;
+    color:var(--grey);
+    font-size:16px;
+    padding-bottom:6px;
+  }
+  .section--dark .section-head p{color:var(--grey-on-dark);}
+  .section-label{
+    font-size:14px;
+    font-weight:600;
+    color:var(--signal);
+    margin-bottom:14px;
+    display:block;
+  }
+
+  /* ---------- WHO WE SERVE ---------- */
+  .audience-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line-light);
+    border:1px solid var(--line-light);
+  }
+  .audience-card{
+    background:var(--paper);
+    padding:48px;
+  }
+  .audience-card h3{font-size:26px;margin-bottom:16px;}
+  .audience-card p{color:var(--grey);font-size:16px;max-width:420px;}
+  .audience-card .tag{
+    display:inline-block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--signal);
+    margin-bottom:18px;
+  }
+
+  /* ---------- SERVICES (What We Do) ---------- */
+  .services-section{
+    background:#fff;
+    color:var(--ink);
+    position:relative;
+    overflow:hidden;
+  }
+  .services-eyebrow{
+    position:relative;
+    z-index:1;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:var(--signal);
+    font-size:14.5px;
+    font-weight:700;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .services-heading{
+    position:relative;
+    z-index:1;
+    font-size:clamp(32px,5vw,54px);
+    max-width:760px;
+    margin-bottom:64px;
+    background:linear-gradient(100deg, var(--ink) 0%, var(--ink) 20%, var(--signal) 65%, #ff9a3c 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .services-cards{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  .service-card{
+    background:#fff;
+    border:1px solid var(--line-light);
+    border-radius:14px;
+    padding:32px 28px;
+    box-shadow:0 4px 16px rgba(16,16,20,0.04);
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .service-card:hover{
+    transform:translateY(-4px);
+    border-color:var(--signal);
+    box-shadow:0 12px 28px rgba(255,100,0,0.14);
+  }
+  .service-card h3{font-size:20px;margin-bottom:14px;color:var(--ink);}
+  .service-card p{color:var(--grey);font-size:15px;margin-bottom:26px;}
+  .read-more{
+    display:inline-block;
+    font-size:14px;
+    font-weight:600;
+    color:var(--signal);
+    background:linear-gradient(90deg, var(--signal), #ffb04d);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  /* ---------- TECH SOLUTIONS ---------- */
+  .tech-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line-dark);
+    border:1px solid var(--line-dark);
+  }
+  .tech-card{
+    background:var(--ink);
+    padding:44px 36px;
+  }
+  .tech-card h3{color:#fff;font-size:21px;margin-bottom:14px;}
+  .tech-card p{color:var(--grey-on-dark);font-size:15px;}
+  .tech-card .mark{
+    width:36px;height:36px;
+    border:1px solid #3a3a41;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
+    color:var(--signal);
+    font-family:'Archivo',sans-serif;
+    font-weight:800;
+    font-size:15px;
+  }
+
+  /* ---------- APPROACH ---------- */
+  .pillars-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:24px;
+  }
+  .pillar{
+    position:relative;
+    background:#fff;
+    border:1px solid var(--line-light);
+    border-radius:14px;
+    padding:32px 28px 28px;
+    overflow:hidden;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .pillar::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:3px;
+    background:linear-gradient(90deg, var(--signal), #ff9a3c);
+  }
+  .pillar:hover{
+    transform:translateY(-4px);
+    border-color:var(--signal);
+    box-shadow:0 12px 28px rgba(255,100,0,0.12);
+  }
+  .pillar h3{font-size:20px;margin-bottom:12px;}
+  .pillar p{color:var(--grey);font-size:15.5px;max-width:440px;}
+
+  /* ---------- PROCESS ---------- */
+  .process-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+    position:relative;
+    padding-top:30px;
+  }
+  .process-grid::before{
+    content:"";
+    position:absolute;
+    top:56px;
+    left:12%;
+    right:12%;
+    height:2px;
+    background:linear-gradient(90deg, var(--line-light) 0%, var(--signal) 50%, var(--line-light) 100%);
+    z-index:0;
+  }
+  .process-step{
+    position:relative;
+    z-index:1;
+    background:#fff;
+    border:1px solid var(--line-light);
+    padding:46px 32px 36px;
+  }
+  .step-badge{
+    position:absolute;
+    top:-26px;left:32px;
+    width:52px;height:52px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--signal), #b6480c);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Archivo', sans-serif;
+    font-weight:800;
+    font-size:19px;
+    box-shadow:0 10px 22px rgba(255,100,0,0.32);
+  }
+  .process-step h3{font-size:22px;margin-bottom:14px;}
+  .process-step p{color:var(--grey);font-size:15.5px;}
+
+  /* ---------- GLOBAL ---------- */
+  .global-wrap{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .global-section{
+    position:relative;
+    overflow:hidden;
+    background:#fff url('world-map.png') center / cover no-repeat;
+  }
+  .global-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.7);
+  }
+  .global-section .wrap{position:relative;z-index:1;}
+  .global-copy h2{font-size:clamp(30px,4vw,42px);margin-bottom:22px;}
+  .global-copy p{color:var(--grey);font-size:17px;max-width:460px;}
+  .region-list{border-top:1px solid var(--line-light);}
+  .region-row{
+    display:flex;
+    justify-content:space-between;
+    padding:18px 0;
+    border-bottom:1px solid var(--line-light);
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:17px;
+  }
+  .region-row span:last-child{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:400;
+    color:var(--grey);
+    font-size:14.5px;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:820px;}
+  .faq-item{border-bottom:1px solid var(--line-light);}
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:26px 0;
+    font-family:'Archivo', sans-serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--ink);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    cursor:pointer;
+  }
+  .faq-icon{
+    flex:none;
+    width:26px;height:26px;
+    border:1px solid var(--line-light);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;
+    transition:transform .25s ease;
+  }
+  .faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--signal);color:var(--signal);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .faq-a p{padding:0 0 26px;color:var(--grey);font-size:15.5px;max-width:640px;}
+
+  /* ---------- CTA ---------- */
+  .cta-section{
+    background:var(--ink);
+    color:#fff;
+    padding:130px 0;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-section::before{
+    content:"";
+    position:absolute;
+    bottom:-220px;left:50%;
+    transform:translateX(-50%);
+    width:760px;height:760px;
+    background:radial-gradient(circle, rgba(255,75,46,0.18) 0%, rgba(255,75,46,0) 65%);
+  }
+  .cta-inner{position:relative;z-index:1;}
+  .cta-section h2{font-size:clamp(34px,5.5vw,58px);max-width:760px;margin:0 auto 20px;}
+  .cta-section p{color:#c8c8ce;font-size:18px;max-width:480px;margin:0 auto 40px;}
+
+  /* ---------- LOGO OUTRO ---------- */
+  .logo-outro{
+    background:#ffffff;
+    padding:42px 0 24px;
+    text-align:center;
+  }
+  .logo-outro-img{
+    width:100%;
+    max-width:none;
+    margin:0 auto;
+    display:block;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink-soft);color:#fff;padding:80px 0 32px;border-top:1px solid var(--line-dark);}
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:60px;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .footer-brand .brand{margin-bottom:16px;}
+  .footer-brand p{color:var(--grey-on-dark);font-size:14.5px;max-width:280px;}
+  .footer-col h4{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    color:#8c8c94;
+    margin-bottom:18px;
+  }
+  .footer-col ul li{margin-bottom:11px;}
+  .footer-col a{color:#d3d3d8;font-size:14.5px;transition:color .2s ease;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    padding-top:28px;
+    display:flex;
+    justify-content:space-between;
+    color:#77777f;
+    font-size:13.5px;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .wrap{padding:0 22px;}
+    .nav-links{
+      position:fixed;top:0;right:0;height:100vh;width:78%;max-width:340px;
+      background:var(--ink);
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:flex-start;
+      overflow-y:auto;
+      padding:100px 32px 40px;
+      transform:translateX(100%);
+      transition:transform .3s ease;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links > li{width:100%;}
+    .nav-links a{color:#fff;padding:14px 0;width:100%;}
+    .nav-links a:hover{color:var(--signal);}
+    .nav-caret{color:#8c8c94;}
+    .dropdown-panel{
+      position:static;
+      width:100%;
+      opacity:1;
+      visibility:visible;
+      pointer-events:auto;
+      transform:none;
+      box-shadow:none;
+      border:none;
+      padding:0 0 10px 12px;
+      display:block;
+    }
+    .dropdown-panel.dropdown-grid{grid-template-columns:1fr;}
+    .dropdown-link{padding:10px 0 !important;color:#d3d3d8;}
+    .dropdown-link:hover{background:none;}
+    .nav-cta{margin-left:0;margin-top:12px;display:inline-block;}
+    .nav-toggle{display:block;}
+    .hero{padding-top:130px;padding-bottom:80px;}
+    .section{padding:80px 0;}
+    .audience-grid, .tech-grid{grid-template-columns:1fr;}
+    .services-cards{grid-template-columns:1fr;}
+    .pillars-grid{grid-template-columns:1fr;}
+    .process-grid{grid-template-columns:1fr;}
+    .process-grid::before{display:none;}
+    .global-wrap{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr 1fr;gap:36px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand-mark"><img src="spunk-glint-transparent.webp" alt="Spunk Global"></a>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item has-dropdown">
+        <a href="#services">What We Do <span class="nav-caret">⌄</span></a>
+        <div class="dropdown-panel dropdown-grid">
+          <a href="service.html?service=strategic-marketing" class="dropdown-link">Strategic Marketing</a>
+          <a href="service.html?service=digital-innovation" class="dropdown-link">Digital Innovation with AI</a>
+          <a href="service.html?service=performance-marketing" class="dropdown-link">Performance Marketing</a>
+          <a href="service.html?service=brand-campaigns" class="dropdown-link">Brand Campaigns</a>
+          <a href="service.html?service=seo-aeo" class="dropdown-link">SEO & AEO</a>
+          <a href="service.html?service=content-design" class="dropdown-link">Content & Design</a>
+        </div>
+      </li>
+      <li class="nav-item has-dropdown">
+        <a href="#tech">Tech Solutions <span class="nav-caret">⌄</span></a>
+        <div class="dropdown-panel dropdown-list">
+          <a href="service.html?service=web-app-development" class="dropdown-link">Web & App Development</a>
+          <a href="service.html?service=ai-automation" class="dropdown-link">AI Automation</a>
+          <a href="service.html?service=data-engineering" class="dropdown-link">Data Engineering</a>
+        </div>
+      </li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Start a project</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-inner">
+        <p class="hero-kicker">AI strategy, marketing, and technology for startups and brands</p>
+        <h1>Growth that matters<br>for <span class="rotate-wrap"><span class="rotate-word" id="rotateWord">startups</span></span>.</h1>
+        <p class="hero-sub">Spunk Global builds solutions and creates campaigns that deliver measurable business growth — cutting through the noise instead of adding to it.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Start a project</a>
+          <a href="#services" class="btn btn-ghost-light">See what we do</a>
+        </div>
+      </div>
+      <div class="hero-showcase">
+        <div class="hero-showcase-frame" id="heroShowcaseFrame">
+          <img class="hero-slide" data-role="active" src="hero-1.jpg" alt="Team reviewing a go-to-market strategy in a client workshop" loading="eager">
+          <img class="hero-slide" data-role="peek" src="hero-2.jpg" alt="Flux brand identity book, part of a client rebrand" loading="lazy">
+          <img class="hero-slide" data-role="hidden" src="hero-3.jpg" alt="Growth dashboard showing performance results on a laptop" loading="lazy">
+        </div>
+        <div class="hero-showcase-controls">
+          <button class="hero-nav-btn" id="heroPrev" type="button" aria-label="Previous project">‹</button>
+          <button class="hero-nav-btn" id="heroNext" type="button" aria-label="Next project">›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Built for two kinds of ambition.</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="tag">For startups</span>
+        <h3>You're moving fast with a small team.</h3>
+        <p>You need a growth function without the twelve-month runway to build one. We plug in as strategy, marketing, and technology — sized to your stage, not our retainer minimum.</p>
+      </div>
+      <div class="audience-card">
+        <span class="tag">For brands</span>
+        <h3>You've got scale to protect and grow.</h3>
+        <p>You don't need another agency reinventing your brand. You need someone disciplined enough to find the next lever without touching what's already working.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services-section" id="services">
+  <div class="wrap">
+    <div class="services-eyebrow">
+      What We Do
+    </div>
+    <h2 class="services-heading">Expert-led. No slop. Proven results.</h2>
+    <div class="services-cards">
+      <div class="service-card">
+        <h3>Strategic Marketing</h3>
+        <p>We build the plan before the campaign — positioning, channel mix, budget, and the sequence that makes them compound instead of compete.</p>
+        <a href="service.html?service=strategic-marketing" class="read-more">Read more →</a>
+      </div>
+      <div class="service-card">
+        <h3>Digital Innovation with AI</h3>
+        <p>AI folded into how you plan, create, and operate — the new baseline for how growth work gets done, not a side experiment.</p>
+        <a href="service.html?service=digital-innovation" class="read-more">Read more →</a>
+      </div>
+      <div class="service-card">
+        <h3>Performance Marketing</h3>
+        <p>Paid media judged on pipeline and revenue, tested and reallocated on a weekly rhythm instead of a quarterly one.</p>
+        <a href="service.html?service=performance-marketing" class="read-more">Read more →</a>
+      </div>
+      <div class="service-card">
+        <h3>Brand Campaigns</h3>
+        <p>Big ideas built to survive contact with a media plan — creative that has to perform as hard as it looks.</p>
+        <a href="service.html?service=brand-campaigns" class="read-more">Read more →</a>
+      </div>
+      <div class="service-card">
+        <h3>SEO & AEO</h3>
+        <p>Visibility where people search and where AI answers — plus the citation groundwork that gets you named by ChatGPT, Gemini, and Perplexity.</p>
+        <a href="service.html?service=seo-aeo" class="read-more">Read more →</a>
+      </div>
+      <div class="service-card">
+        <h3>Content & Design</h3>
+        <p>Editorial, visual, and video output at the volume growth actually requires, without the week-long agency brief cycle.</p>
+        <a href="service.html?service=content-design" class="read-more">Read more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark" id="tech">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Beyond marketing: the tech to run on.</h2>
+    </div>
+    <div class="tech-grid">
+      <a href="service.html?service=web-app-development" class="tech-card">
+        <div class="mark">01</div>
+        <h3>End-to-End Web & App Development</h3>
+        <p>From product spec to shipped release — sites and applications built to convert, not just exist.</p>
+      </a>
+      <a href="service.html?service=ai-automation" class="tech-card">
+        <div class="mark">02</div>
+        <h3>AI Automation</h3>
+        <p>AI wired into your operations: lead routing, reporting, customer response — the repetitive work your team shouldn't be doing by hand.</p>
+      </a>
+      <a href="service.html?service=data-engineering" class="tech-card">
+        <div class="mark">03</div>
+        <h3>Data Engineering</h3>
+        <p>Clean pipelines and dashboards that hold up, so growth decisions get made on your numbers instead of a gut feeling.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How we're different.</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <h3>Strategy before spend.</h3>
+        <p>We don't run tactics in search of a strategy. Every channel decision traces back to a business goal we agreed on first.</p>
+      </div>
+      <div class="pillar">
+        <h3>AI-native, not AI-washed.</h3>
+        <p>Our teams use AI to move faster and see more. The judgment stays human — the execution just gets a lot quicker.</p>
+      </div>
+      <div class="pillar">
+        <h3>One team, not a chain of vendors.</h3>
+        <p>Marketing, design, and engineering sit in the same room. Nothing gets lost in the handoff between agencies.</p>
+      </div>
+      <div class="pillar">
+        <h3>Global by design.</h3>
+        <p>Headquartered in the UAE, with talent across Asia, Europe, and Latin America — we build the team around the work, not the other way around.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dim">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How we work.</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <span class="step-badge">1</span>
+        <h3>Diagnose</h3>
+        <p>We audit what's actually driving — or blocking — growth today: channels, content, product, and the data behind all of it.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-badge">2</span>
+        <h3>Design</h3>
+        <p>We build the plan: which levers to pull, in what order, with what team, and what it should move in 90 days.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-badge">3</span>
+        <h3>Deliver</h3>
+        <p>We execute, measure weekly, and adjust in-flight. Growth compounds when you stop waiting for the next planning cycle to change course.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white global-section">
+  <div class="wrap">
+    <div class="global-wrap">
+      <div class="global-copy">
+        <h2>Headquartered in the UAE. Built for everywhere.</h2>
+        <p>Our core team sits in the UAE, with strategists, engineers, and creatives across Asia, Europe, and Latin America. Timezone coverage isn't a perk here — it's how we ship on your schedule instead of ours.</p>
+      </div>
+      <div class="region-list">
+        <div class="region-row"><span>UAE</span><span>Headquarters</span></div>
+        <div class="region-row"><span>Asia</span><span>Delivery & engineering</span></div>
+        <div class="region-row"><span>Europe</span><span>Strategy & creative</span></div>
+        <div class="region-row"><span>Latin America</span><span>Content & design</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dim" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q">
+          What makes Spunk different from a traditional marketing agency?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Most agencies stop at the campaign. We go from strategy through execution and into the technology that runs it — automation, data, and product — so growth isn't capped by what a media plan alone can do.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          Do you work with early-stage startups or only established brands?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Both, deliberately. Startups get a growth function without the overhead of building one internally. Brands get a partner who can find new levers without disturbing what's already working.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          What is AEO, and why does it matter now?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Answer Engine Optimization is visibility inside AI answers — ChatGPT, Gemini, Perplexity — not just search results pages. As more discovery moves inside AI tools, brands that aren't structured to be cited there lose visibility even while ranking well on Google.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          Can you handle both the marketing and the technical build?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes — that's the point. Our tech team builds the website, app, or automation your campaigns need, so strategy and execution aren't split across two vendors that don't talk to each other.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          How is success measured?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Against business outcomes — pipeline, conversion, revenue, retention — not impressions or reach, unless they're a genuine leading indicator we agreed on upfront.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          How do we get started?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p>A short call to understand where growth is actually stuck. From there, we scope a plan with clear priorities before any retainer starts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="wrap cta-inner">
+    <h2>Growth that matters starts with one conversation.</h2>
+    <p>Tell us where you're stuck. We'll tell you what we'd do about it.</p>
+    <a href="mailto:hello@spunkglobal.com" class="btn btn-primary">Start a project</a>
+  </div>
+</section>
+
+<section class="logo-outro">
+  <div class="wrap">
+    <img src="spunk-glint-transparent.webp" alt="Spunk Global logo animation" class="logo-outro-img">
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand-mark" style="margin-bottom:16px;"><img src="spunk-glint-transparent.webp" alt="Spunk Global"></a>
+        <p>Growth that matters. AI strategy, marketing, and technology for startups and brands — headquartered in the UAE, working globally.</p>
+      </div>
+      <div class="footer-col">
+        <h4>What We Do</h4>
+        <ul>
+          <li><a href="service.html?service=strategic-marketing">Strategic Marketing</a></li>
+          <li><a href="service.html?service=digital-innovation">Digital Innovation with AI</a></li>
+          <li><a href="service.html?service=performance-marketing">Performance Marketing</a></li>
+          <li><a href="service.html?service=brand-campaigns">Brand Campaigns</a></li>
+          <li><a href="service.html?service=seo-aeo">SEO & AEO</a></li>
+          <li><a href="service.html?service=content-design">Content & Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tech Solutions</h4>
+        <ul>
+          <li><a href="service.html?service=web-app-development">Web & App Development</a></li>
+          <li><a href="service.html?service=ai-automation">AI Automation</a></li>
+          <li><a href="service.html?service=data-engineering">Data Engineering</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#approach">Approach</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:hello@spunkglobal.com">hello@spunkglobal.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Spunk Global. All rights reserved.</span>
+      <span>UAE · Asia · Europe · Latin America</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const rotateWords = ['startups', 'brands', 'founders', 'teams'];
+  const rotateEl = document.getElementById('rotateWord');
+  let rotateIndex = 0;
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  });
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    if(item.classList.contains('open')){ a.style.maxHeight = a.scrollHeight + 'px'; }
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ---------- HERO SHOWCASE ---------- */
+  const heroFrame = document.getElementById('heroShowcaseFrame');
+  if(heroFrame){
+    const roles = ['active', 'peek', 'hidden'];
+    let slides = Array.from(heroFrame.querySelectorAll('.hero-slide'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function render(){
+      slides.forEach((slide, i) => slide.setAttribute('data-role', roles[i]));
+    }
+    function advance(){
+      slides.push(slides.shift());
+      render();
+      rotateIndex = (rotateIndex + 1) % rotateWords.length;
+      rotateEl.classList.remove('is-animating');
+      void rotateEl.offsetWidth;
+      rotateEl.textContent = rotateWords[rotateIndex];
+      rotateEl.classList.add('is-animating');
+    }
+    function retreat(){
+      slides.unshift(slides.pop());
+      render();
+      rotateIndex = (rotateIndex - 1 + rotateWords.length) % rotateWords.length;
+      rotateEl.classList.remove('is-animating');
+      void rotateEl.offsetWidth;
+      rotateEl.textContent = rotateWords[rotateIndex];
+      rotateEl.classList.add('is-animating');
+    }
+
+    let timer;
+    function startAutoplay(){
+      if(reduceMotion) return;
+      timer = setInterval(advance, 4000);
+    }
+    function resetAutoplay(){
+      clearInterval(timer);
+      startAutoplay();
+    }
+
+    document.getElementById('heroNext').addEventListener('click', () => { advance(); resetAutoplay(); });
+    document.getElementById('heroPrev').addEventListener('click', () => { retreat(); resetAutoplay(); });
+
+    startAutoplay();
+  }
+</script>
+
+</body>
+</html>
